@@ -37,34 +37,44 @@ const replaceTemplate = (temp, product) => {
   output = output.replace(/{%Image%}/g, product.image);
   output = output.replace(/{%Price%}/g, product.price);
   output = output.replace(/{%From%}/g, product.from);
-  output = output.replace(/{%Nuntrient%}/g, product.nutrients);
+  output = output.replace(/{%Nutrient%}/g, product.nutrients);
   output = output.replace(/{%Quantity%}/g, product.quantity);
   output = output.replace(/{%Id%}/g, product.id);
 
   if (!product.organic) {
     output = output.replace(/{%Not_Organic%}/g, "not-organic");
-  };
+  }
   return output;
-}
+};
 
-const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, "utf-8");
-const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`, "utf-8");
-const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.html`, "utf-8");
+const tempOverview = fs.readFileSync(
+  `${__dirname}/templates/template-overview.html`,
+  "utf-8"
+);
+const tempCard = fs.readFileSync(
+  `${__dirname}/templates/template-card.html`,
+  "utf-8"
+);
+const tempProduct = fs.readFileSync(
+  `${__dirname}/templates/template-product.html`,
+  "utf-8"
+);
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((request, response) => {
-
-  console.log(request.url);
-  console.log(url.parse(  ));
+  // console.log(request.url);
+  // console.log(url.parse());
   const pathName = request.url;
 
   // OverView Page
   if (pathName === "/" || pathName === "/overview") {
     response.writeHead(200, { "content-type": "text/html" });
 
-    const cardHtml = dataObj.map(el => replaceTemplate(tempCard, el));
+    const cardHtml = dataObj
+      .map((el) => replaceTemplate(tempCard, el))
+      .join("   ");
     const output = tempOverview.replace("{%Product_Card%}", cardHtml);
     response.end(output);
 
@@ -74,8 +84,8 @@ const server = http.createServer((request, response) => {
 
     // Api
   } else if (pathName === "/api") {
-      response.writeHead(200, { "content-type": "application/json" });
-      response.end(data);
+    response.writeHead(200, { "content-type": "application/json" });
+    response.end(data);
 
     // Not Found
   } else {
