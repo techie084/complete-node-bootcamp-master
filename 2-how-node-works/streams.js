@@ -26,7 +26,7 @@ server.on("request", (req, res) => {
 
   const readable = fs.createReadStream("test-file.txt");
   readable.pipe(res);
-  // ReadableSource(writeableDestination)
+  // readableSource.pipe(writeableDest)
 });
 
 server.listen(8000, "127.0.0.1", () => {
