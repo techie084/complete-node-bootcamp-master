@@ -5,8 +5,8 @@ fs.readFile(`${__dirname}/dog.txt`, (err, data) => {
   console.log(`Bread: ${data}`);
 
   superagent
-    .get(`https://dog.ceo/api/bread/${data}/image/random`)
+    .get(`https://dog.ceo/api/breed/${data}/image/random`)
     .end((err, res) => {
-      console.log(res.body);
+      console.log(res.body.message);
     });
 });
