@@ -1,0 +1,22 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "learning node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techie084/complete-node-bootcamp-master.git"
+  },
+  "author": "Wisdom Matthew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techie084/complete-node-bootcamp-master/issues"
+  },
+  "homepage": "https://github.com/techie084/complete-node-bootcamp-master#readme",
+  "dependencies": {
+    "slugify": "^1.6.6"
+  }
+}
