@@ -25,18 +25,18 @@ const getDogPic = async () => {
     console.log(`Breed: ${data}`);
 
     const res1Pro = superagent.get(
-      `https://dog.ceo/api/breed/${data}/images/random`
+      `https://dog.ceo/api/breed/${data}/images/random`,
     );
 
     const res2Pro = superagent.get(
-      `https://dog.ceo/api/breed/${data}/images/random`
+      `https://dog.ceo/api/breed/${data}/images/random`,
     );
 
     const res3Pro = superagent.get(
-      `https://dog.ceo/api/breed/${data}/images/random`
+      `https://dog.ceo/api/breed/${data}/images/random`,
     );
 
-    const all = Promise.all([res1Pro, res2Pro, res3Pro]);
+    const all = await Promise.all([res1Pro, res2Pro, res3Pro]);
     const imgs = all.map((el) => el.body.message);
     console.log(imgs);
 
@@ -60,13 +60,15 @@ const getDogPic = async () => {
   }
 })();
 
-// console.log('1: Will get Dog pics!');
-// getDogPic().then((x) => {
-//   console.log(x);
-//   console.log('2: Done getting Dog pics!');
-// }).catch(err => {
-//   console.log(err);
-// });
+/*
+console.log('1: Will get Dog pics!');
+getDogPic().then((x) => {
+  console.log(x);
+  console.log('2: Done getting Dog pics!');
+}).catch(err => {
+  console.log(err);
+});
+*/
 
 /*
 readFilePro(`${__dirname}/dog .txt`)

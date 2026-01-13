@@ -1,14 +1,14 @@
 module.exports = (temp, product) => {
-  let output = temp.replace(/{%ProductName%}/g, product.productName);
-  output = output.replace(/{%Image%}/g, product.image);
-  output = output.replace(/{%Price%}/g, product.price);
-  output = output.replace(/{%From%}/g, product.from);
-  output = output.replace(/{%Nutrient%}/g, product.nutrients);
-  output = output.replace(/{%Quantity%}/g, product.quantity);
-  output = output.replace(/{%Id%}/g, product.id);
+  let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);
+  output = output.replace(/{%IMAGE%}/g, product.image);
+  output = output.replace(/{%PRICE%}/g, product.price);
+  output = output.replace(/{%FROM%}/g, product.from);
+  output = output.replace(/{%NUTRIENTS%}/g, product.nutrients);
+  output = output.replace(/{%QUANTITY%}/g, product.quantity);
+  output = output.replace(/{%ID%}/g, product.id);
 
   if (!product.organic) {
-    output = output.replace(/{%Not_Organic%}/g, "not-organic");
+    output = output.replace(/{%NOT_ORGANIC%}/g, "not-organic");
   }
   return output;
 };

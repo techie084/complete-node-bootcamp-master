@@ -1,8 +1,8 @@
 // console.log(arguments);
 // console.log(require("module").wrapper);
 
-// Modules.export
-const Calc = require("./test-module-1");
+// Modules.exports
+const Calc = require("./test-module-1").default;
 const calc1 = new Calc();
 console.log(calc1.add(2, 5));
 

@@ -2,8 +2,8 @@ const fs = require("fs");
 const crypto = require("crypto");
 
 const start = Date.now();
+
 process.env.UV_THREADPOOL_SIZE = 4;
-// Error
 
 setTimeout(() => console.log("Timer 1 finished "), 0);
 setImmediate(() => console.log("immediate 1 finished"));
